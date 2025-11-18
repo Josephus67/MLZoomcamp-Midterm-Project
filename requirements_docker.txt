@@ -1,0 +1,6 @@
+# Minimal requirements for Docker deployment (prediction only)
+pandas==2.0.3
+numpy==1.26.4
+scikit-learn==1.6.1
+flask==2.3.3
+gunicorn==21.2.0
