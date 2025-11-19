@@ -281,51 +281,61 @@ Health check endpoint.
 
 ---
 
-## ☁️ Cloud Deployment (Optional)
+## ☁️ Cloud Deployment
 
-### Deploy to AWS Elastic Beanstalk
+### 🚂 Deployed on Railway
 
-1. Install EB CLI:
+The application is live and deployed on Railway!
+
+**🌐 Live Endpoints:**
+
+- **Health Check:** https://mlzoomcamp-midterm-project-production.up.railway.app/health
+- **Prediction API:** https://mlzoomcamp-midterm-project-production.up.railway.app/predict
+
+### Testing the Deployed API
+
+**1. Health Check (Browser or Terminal):**
 ```bash
-pip install awsebcli
+curl https://mlzoomcamp-midterm-project-production.up.railway.app/health
 ```
 
-2. Initialize EB application:
+**2. Make Predictions:**
 ```bash
-eb init -p docker heart-disease-app
+curl -X POST https://mlzoomcamp-midterm-project-production.up.railway.app/predict \
+  -H "Content-Type: application/json" \
+  -d '{
+    "Age": 52,
+    "Sex": "M",
+    "ChestPainType": "ASY",
+    "RestingBP": 120,
+    "Cholesterol": 280,
+    "FastingBS": 0,
+    "RestingECG": "Normal",
+    "MaxHR": 150,
+    "ExerciseAngina": "N",
+    "Oldpeak": 2.5,
+    "ST_Slope": "Flat"
+  }'
 ```
 
-3. Create environment and deploy:
-```bash
-eb create heart-disease-env
+**Expected Response:**
+```json
+{
+  "heart_disease": true,
+  "heart_disease_probability": 0.8476,
+  "message": "High risk of heart disease. Seek immediate medical attention.",
+  "risk_level": "High"
+}
 ```
 
-4. Access your application:
-```bash
-eb open
-```
+### Deploy Your Own Instance on Railway
 
-### Deploy to Heroku
-
-1. Install Heroku CLI and login:
-```bash
-heroku login
-```
-
-2. Create Heroku app:
-```bash
-heroku create heart-disease-prediction
-```
-
-3. Deploy:
-```bash
-git push heroku main
-```
-
-4. Open app:
-```bash
-heroku open
-```
+1. Fork this repository on GitHub
+2. Sign up at [Railway](https://railway.app)
+3. Click "New Project" → "Deploy from GitHub repo"
+4. Select your forked repository
+5. Railway will automatically detect the Dockerfile and deploy
+6. Your app will be live at: `https://your-app-name.up.railway.app`
 
 ---
 
