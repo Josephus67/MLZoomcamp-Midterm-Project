@@ -357,7 +357,7 @@ curl -X POST https://mlzoomcamp-midterm-project-production.up.railway.app/predic
 
 ## 👥 Author
 
-Your Name - ML Zoomcamp Project
+Bawah Josephus - ML Zoomcamp Project
 
 ---
 
